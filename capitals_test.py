@@ -19,9 +19,17 @@ from random import shuffle
 #     print(states[random_number])
 #     states.remove(states[random_number])
 
-# for i in range(0, len(states)):
-#     print(states[i]['name'])
+
+
 randomized_states = [[states[i]] for i in range(0, len(states))]
 shuffle(randomized_states)
 
-print(randomized_states)
+# print(randomized_states)
+
+for i in range(0, len(randomized_states)):
+    print('What is the capital of ' + randomized_states[i][0]['name'] + '?')
+    answer = input()
+    if answer == randomized_states[i][0]['capital']:
+        print(answer + ' is correct')
+    else:
+        print(answer + ' is incorrect')
