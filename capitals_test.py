@@ -29,12 +29,24 @@ for i in range(0, len(randomized_states)):
     randomized_states[i][0]['correct'] = 0
     randomized_states[i][0]['incorrect'] = 0
 
-for i in range(0, len(randomized_states)):
-    print('What is the capital of ' + randomized_states[i][0]['name'] + '?')
-    answer = input()
-    if answer == randomized_states[i][0]['capital']:
-        randomized_states[i][0]['correct'] = randomized_states[i][0]['correct'] + 1
-        print(answer, ' is correct. You have gotten it correct ', randomized_states[i][0]['correct'], ' times.')
+def startGame():
+    for i in range(0, len(randomized_states)):
+        print('What is the capital of ' + randomized_states[i][0]['name'] + '?')
+        answer = input()
+        if answer == randomized_states[i][0]['capital']:
+            randomized_states[i][0]['correct'] = randomized_states[i][0]['correct'] + 1
+            print(answer, ' is correct. You have gotten it correct ', randomized_states[i][0]['correct'], ' times.')
+        else:
+            randomized_states[i][0]['incorrect'] = randomized_states[i][0]['incorrect'] + 1
+            print(answer, ' is incorrect. You have gotten it incorrect ', randomized_states[i][0]['incorrect'], ' times.')
+
+    print('~~~~~~~~~~~~~~~~~~~~ \n That is all ', len(randomized_states), ' states.  Would you like to play again? Y/N \n ~~~~~~~~~~~~~~~~~~~~')
+
+    continueGame = input()
+    if continueGame == 'Y':
+        startGame()
     else:
-        randomized_states[i][0]['incorrect'] = randomized_states[i][0]['incorrect'] + 1
-        print(answer, ' is incorrect. You have gotten it incorrect ', randomized_states[i][0]['incorrect'], ' times.')
+        print('Thank you for playing!')
+
+
+startGame()
