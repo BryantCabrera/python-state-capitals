@@ -25,11 +25,16 @@ randomized_states = [[states[i]] for i in range(0, len(states))]
 shuffle(randomized_states)
 
 # print(randomized_states)
+for i in range(0, len(randomized_states)):
+    randomized_states[i][0]['correct'] = 0
+    randomized_states[i][0]['incorrect'] = 0
 
 for i in range(0, len(randomized_states)):
     print('What is the capital of ' + randomized_states[i][0]['name'] + '?')
     answer = input()
     if answer == randomized_states[i][0]['capital']:
-        print(answer + ' is correct')
+        randomized_states[i][0]['correct'] = randomized_states[i][0]['correct'] + 1
+        print(answer, ' is correct. You have gotten it correct ', randomized_states[i][0]['correct'], ' times.')
     else:
-        print(answer + ' is incorrect')
+        randomized_states[i][0]['incorrect'] = randomized_states[i][0]['incorrect'] + 1
+        print(answer, ' is incorrect. You have gotten it incorrect ', randomized_states[i][0]['incorrect'], ' times.')
