@@ -19,26 +19,29 @@ from random import shuffle
 #     print(states[random_number])
 #     states.remove(states[random_number])
 
-
-
 randomized_states = [[states[i]] for i in range(0, len(states))]
 shuffle(randomized_states)
 
 # print(randomized_states)
+
 for i in range(0, len(randomized_states)):
     randomized_states[i][0]['correct'] = 0
     randomized_states[i][0]['incorrect'] = 0
 
 def startGame():
+    globalCorrect = 0
+    globalIncorrect = 0
     for i in range(0, len(randomized_states)):
-        print('What is the capital of ' + randomized_states[i][0]['name'] + '?')
+        print('__________ \nWhat is the capital of ' + randomized_states[i][0]['name'] + '?')
         answer = input()
         if answer == randomized_states[i][0]['capital']:
-            randomized_states[i][0]['correct'] = randomized_states[i][0]['correct'] + 1
-            print(answer, ' is correct. You have gotten it correct ', randomized_states[i][0]['correct'], ' times.')
+            randomized_states[i][0]['correct'] += 1
+            globalCorrect += 1
+            print(answer, ' is correct. You have gotten it correct ', randomized_states[i][0]['correct'], ' times. \nYou have gotten a total of ', globalCorrect, ' correct overall.\n__________ \n')
         else:
-            randomized_states[i][0]['incorrect'] = randomized_states[i][0]['incorrect'] + 1
-            print(answer, ' is incorrect. You have gotten it incorrect ', randomized_states[i][0]['incorrect'], ' times.')
+            randomized_states[i][0]['incorrect'] += 1
+            globalIncorrect += 1
+            print(answer, ' is incorrect. You have gotten it incorrect ', randomized_states[i][0]['incorrect'], ' times. \nYou have gotten a total of ', globalIncorrect, ' incorrect overall.\n__________ \n')
 
     print('~~~~~~~~~~~~~~~~~~~~ \n That is all ', len(randomized_states), ' states.  Would you like to play again? Y/N \n ~~~~~~~~~~~~~~~~~~~~')
 
